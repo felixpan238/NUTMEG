@@ -1,4 +1,4 @@
-package org.nutmegsoccer.Nutmeg;
+package org.nutmegsoccer.nutmeg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

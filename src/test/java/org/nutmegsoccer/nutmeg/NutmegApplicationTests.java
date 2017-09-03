@@ -1,4 +1,4 @@
-package org.nutmegsoccer.Nutmeg;
+package org.nutmegsoccer.nutmeg;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
