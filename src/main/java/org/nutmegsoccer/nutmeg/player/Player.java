@@ -36,10 +36,10 @@ public class Player {
     private Date birthday;
     
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "id", cascade = CascadeType.ALL)
-	@JoinColumn(name = address_id)
+	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="player_id")
 	private List<Phone> phone;
 
     public Player(){
