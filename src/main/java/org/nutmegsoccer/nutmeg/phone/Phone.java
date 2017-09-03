@@ -18,6 +18,8 @@ public class Phone {
     private int staffId;
     @Column(name = "phone_number", nullable = false)
     private int phoneNumber;
+    @Column(name = "phone_type", nullable = false)
+    private String phoneType;
 
     public Phone(){
 
