@@ -1,11 +1,6 @@
 package org.nutmegsoccer.nutmeg.player;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.nutmegsoccer.nutmeg.address.Address;
 import org.nutmegsoccer.nutmeg.phone.Phone;
@@ -34,14 +29,6 @@ public class Player {
     
 	@Column(name = "birthday", nullable = false)
     private Date birthday;
-    
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "id", cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")
-	private Address address;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="id", cascade = CascadeType.ALL)
-    @JoinColumn(name = "phone_id")
-	private Phone phone;
 
     public Player(){
 
@@ -87,19 +74,4 @@ public class Player {
         this.birthday = birthday;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-    
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-    }
 }

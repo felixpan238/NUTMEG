@@ -1,5 +1,10 @@
 package org.nutmegsoccer.nutmeg.player;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 public class PlayerRestService {
 
@@ -8,12 +13,12 @@ public class PlayerRestService {
     private PlayerService playerService;
 
     @RequestMapping(method= RequestMethod.GET, value="/player/search")
-    public List<Player> searchPlayers() {
-        return playerService.searchPlayer();
+    public List<Player> searchPlayers(@PathVariable String searchFilter) {
+        return playerService.searchPlayer(searchFilter);
     }
 
     @RequestMapping(method= RequestMethod.GET, value="/player/{id}")
-    public Player findById(@PathVariable int id) {
+    public Player findById(@PathVariable Long id) {
         return playerService.findById(id);
     }
 
