@@ -12,10 +12,18 @@ public class Phone {
     @Id
     @Column(name = "id", nullable = false)
     private int id;
+
+    @NotNull
     @Column(name = "phone_number", nullable = false)
     private int phoneNumber;
+
+    @Size(max = 10)
     @Column(name = "phone_type", nullable = false)
     private String phoneType;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id", updatable = false, insertable = false)
+    private Player player;
 
     public Phone(){
 
@@ -43,5 +51,13 @@ public class Phone {
 
     public void setPhoneType(String phoneType) {
         this.phoneType = phoneType;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

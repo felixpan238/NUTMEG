@@ -17,18 +17,31 @@ public class Player {
 	@Id 
     @Column(name = "id", nullable = false)
     private int id;
-    
+
+    @NotNull
+	@Size(max = 30)
 	@Column(name = "first_name", nullable = false)
     private String firstName;
-    
+
+    @NotNull
+    @Size(max = 30)
 	@Column(name = "last_name", nullable = false)
     private String lastName;
-    
+
+    @NotNull
+    @Size(max = 1)
 	@Column(name = "gender", nullable = false)
     private String gender;
-    
+
 	@Column(name = "birthday", nullable = false)
     private Date birthday;
+
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+	private Address address;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Phone> phone;
 
     public Player(){
 
@@ -74,4 +87,19 @@ public class Player {
         this.birthday = birthday;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Phone> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List<Phone> phone) {
+        this.phone = phone;
+    }
 }
