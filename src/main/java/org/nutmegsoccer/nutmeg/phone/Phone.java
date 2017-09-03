@@ -1,12 +1,14 @@
 package org.nutmegsoccer.nutmeg.phone;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.nutmegsoccer.nutmeg.player.Player;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="address")
+@Table(name="phone")
 public class Phone {
 
     @Id
@@ -23,6 +25,7 @@ public class Phone {
 
     @ManyToOne
     @JoinColumn(name = "player_id", updatable = false, insertable = false)
+    @JsonIgnore
     private Player player;
 
     public Phone(){

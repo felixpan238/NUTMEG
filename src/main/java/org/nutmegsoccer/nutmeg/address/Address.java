@@ -1,9 +1,10 @@
 package org.nutmegsoccer.nutmeg.address;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.nutmegsoccer.nutmeg.player.Player;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="address")
@@ -39,8 +40,8 @@ public class Address {
     @Column(name = "country", nullable = false)
     private String country;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "sddress")
-    private Player player
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
+    private Player player;
 
     public Address(){
 

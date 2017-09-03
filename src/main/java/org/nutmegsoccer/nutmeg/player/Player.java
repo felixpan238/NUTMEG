@@ -1,6 +1,8 @@
 package org.nutmegsoccer.nutmeg.player;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.nutmegsoccer.nutmeg.address.Address;
 import org.nutmegsoccer.nutmeg.phone.Phone;
@@ -36,11 +38,11 @@ public class Player {
 	@Column(name = "birthday", nullable = false)
     private Date birthday;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
     @JoinColumn(name = "address_id")
 	private Address address;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", orphanRemoval = true)
     private List<Phone> phone;
 
     public Player(){
