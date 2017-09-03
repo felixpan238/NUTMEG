@@ -35,15 +35,12 @@ public class Player {
 	@Column(name = "birthday", nullable = false)
     private Date birthday;
     
-	@OneToOne
-	@Column(name = "address_id", referencedColumnName="id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = address_id)
 	private Address address;
 	
-	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@Column(name = "phone_id", referencedColumnName="id", nullable = false)
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Phone> phone;
-	
 
     public Player(){
 
