@@ -35,7 +35,7 @@ public class Player {
 	@Column(name = "birthday", nullable = false)
     private Date birthday;
     
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "id", cascade = CascadeType.ALL)
 	@JoinColumn(name = address_id)
 	private Address address;
 	
