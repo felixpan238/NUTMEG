@@ -39,8 +39,9 @@ public class Player {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="player_id")
-	private List<Phone> phone;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="id", cascade = CascadeType.ALL)
+    @JoinColumn(name = "phone_id")
+	private Phone phone;
 
     public Player(){
 
@@ -94,11 +95,11 @@ public class Player {
         this.address = address;
     }
     
-    public List<Phone> getPhone() {
+    public Phone getPhone() {
         return phone;
     }
 
-    public void setPhone(List<Phone> phone) {
+    public void setPhone(Phone phone) {
         this.phone = phone;
     }
 }
