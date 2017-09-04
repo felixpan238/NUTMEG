@@ -1,54 +1,103 @@
 package org.nutmegsoccer.nutmeg.player;
 
+import org.springframework.data.domain.Pageable;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
 public class PlayerSearchCriteria {
 
-    private String firstName;
+    private final String firstName;
 
-    private String lastName;
+    private final String lastName;
 
-    private String gender;
+    private final String gender;
 
-    private String birthdayStartsWith;
+    private final LocalDate birthdayStartsWith;
 
-    private String birthdayEndsWith;
+    private final LocalDate birthdayEndsWith;
 
-    public String getFirstName() {
-        return firstName;
+    private final Pageable pageable;
+
+    private PlayerSearchCriteria(Builder builder) {
+        firstName = builder.firstName;
+        lastName = builder.lastName;
+        gender = builder.gender;
+        birthdayStartsWith = builder.birthdayStartsWith;
+        birthdayEndsWith = builder.birthdayEndsWith;
+        pageable = builder.pageable;
+    }
+    public static Builder newBuilder() {
+        return new Builder();
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Optional<String> getFirstName() {
+        return Optional.ofNullable(firstName);
     }
 
-    public String getLastName() {
-        return lastName;
+    public Optional<String> getLastName() {
+        return Optional.ofNullable(lastName);
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Optional<String> getGender() {
+        return Optional.ofNullable(gender);
     }
 
-    public String getGender() {
-        return gender;
+    public Optional<LocalDate> getBirthdayStartsWith() {
+        return Optional.ofNullable(birthdayStartsWith);
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public Optional<LocalDate> getBirthdayEndsWith() {
+        return Optional.ofNullable(birthdayEndsWith);
     }
 
-    public String getBirthdayStartsWith() {
-        return birthdayStartsWith;
+    public Pageable getPageable() {
+        return pageable;
     }
 
-    public void setBirthdayStartsWith(String birthdayStartsWith) {
-        this.birthdayStartsWith = birthdayStartsWith;
-    }
+    public static final class Builder {
+        private String firstName;
+        private String lastName;
+        private String gender;
+        private LocalDate birthdayStartsWith;
+        private LocalDate birthdayEndsWith;
+        private Pageable pageable;
 
-    public String getBirthdayEndsWith() {
-        return birthdayEndsWith;
-    }
+        private Builder() {
+        }
 
-    public void setBirthdayEndsWith(String birthdayEndsWith) {
-        this.birthdayEndsWith = birthdayEndsWith;
+        public Builder withFirstName(String val) {
+            firstName = val;
+            return this;
+        }
+
+        public Builder withLastName(String val) {
+            lastName = val;
+            return this;
+        }
+
+        public Builder withGender(String val) {
+            gender = val;
+            return this;
+        }
+
+        public Builder withBirthdayStartsWith(LocalDate val) {
+            birthdayStartsWith = val;
+            return this;
+        }
+
+        public Builder withBirthdayEndsWith(LocalDate val) {
+            birthdayEndsWith = val;
+            return this;
+        }
+
+        public Builder withPageable(Pageable val) {
+            pageable = val;
+            return this;
+        }
+
+        public PlayerSearchCriteria build() {
+            return new PlayerSearchCriteria(this);
+        }
     }
 }

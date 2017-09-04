@@ -13,7 +13,7 @@ public class Phone {
 
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @NotNull
     @Column(name = "phone_number", nullable = false)
@@ -23,20 +23,20 @@ public class Phone {
     @Column(name = "phone_type", nullable = false)
     private String phoneType;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "player_id", updatable = false, insertable = false)
-    @JsonIgnore
     private Player player;
 
     public Phone(){
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

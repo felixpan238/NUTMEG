@@ -1,12 +1,18 @@
 package org.nutmegsoccer.nutmeg.player;
 
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public interface PlayerService {
-    public List<Player> searchPlayer(String searchFilter);
-    public void insertPlayer(Player player);
-    public Player findById (Long id);
-    public void updatePlayer(Player player);
-    public void deletePlayer(int id);
 
+    Player findById (final Long id);
+
+    Page<Player> searchPlayers(final PlayerSearchCriteria searchCriteria);
+
+    Long createPlayer(final Player player);
+
+    Player updatePlayer(final Player player);
+
+    void deletePlayer(final Long id);
 }

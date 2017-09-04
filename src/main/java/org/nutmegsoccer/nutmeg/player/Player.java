@@ -18,7 +18,7 @@ public class Player {
     
 	@Id 
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @NotNull
 	@Size(max = 30)
@@ -49,11 +49,11 @@ public class Player {
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
