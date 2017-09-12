@@ -45,6 +45,8 @@ public class Player {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", orphanRemoval = true)
     private List<Phone> phone;
 
+	// Email (same as phone)
+
     public Player(){
 
     }

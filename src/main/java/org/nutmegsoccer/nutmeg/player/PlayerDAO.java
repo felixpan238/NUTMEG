@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PlayerDAO  extends JpaRepository<Player, Integer>, QueryDslPredicateExecutor{
+public interface PlayerDAO extends JpaRepository<Player, Integer>, QueryDslPredicateExecutor{
 
     Optional<Player> findById(final int id);
 
