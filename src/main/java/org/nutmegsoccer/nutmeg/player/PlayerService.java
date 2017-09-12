@@ -2,8 +2,6 @@ package org.nutmegsoccer.nutmeg.player;
 
 import org.springframework.data.domain.Page;
 
-import java.util.List;
-
 public interface PlayerService {
 
     Player findById (final Long id);
